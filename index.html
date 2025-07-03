@@ -1,339 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Quiet Brand  | Jaye Creates</title>
+    <title>The Quiet Brand | Jaye Creates</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Your existing styles here */
+        body { font-family: 'Georgia', serif; background: #fafafa; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .logo img { height: 40px; margin-right: 10px; }
+        .cta-button, .contact-button {
+            background: white; color: #5a6b4a; padding: 15px 30px;
+            border-radius: 50px; font-weight: bold; font-size: 1.1rem;
+            text-decoration: none; transition: all 0.3s; display: inline-block;
         }
-
-        body {
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            color: #333;
-            background: #fafafa;
+        .cta-button:hover, .contact-button:hover {
+            background: #f0f0f0; transform: translateY(-2px);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .pricing { padding: 80px 0; background: #f0f0f0; text-align: center; }
+        .pricing h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #5a6b4a; }
+        .pricing-table { max-width: 800px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        .pricing-item {
+            background: white; padding: 2rem; border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: left;
         }
-
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #5a6b4a 0%, #7a8d6a 100%);
-            color: white;
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-icon {
-            width: 50px;
-            height: 40px;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA1MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHRleHQgeD0iMjUiIHk9IjI1IiBmb250LWZhbWlseT0iR2VvcmdpYSIgZm9udC1zaXplPSIyNCIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5RQjwvdGV4dD4KPHN2Zz4K') no-repeat center center;
-            background-size: contain;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        nav a:hover {
-            opacity: 0.8;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #5a6b4a 0%, #7a8d6a 100%);
-            color: white;
-            padding: 120px 0 80px;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: normal;
-        }
-
-        .hero .tagline {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .cta-button {
-            background: white;
-            color: #5a6b4a;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .cta-button:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .about h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #5a6b4a;
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, #5a6b4a 0%, #7a8d6a 100%);
-            height: 400px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: #f8f9f6;
-        }
-
-        .services h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #5a6b4a;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #5a6b4a;
-        }
-
-        /* Process Section */
-        .process {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .process h2 {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #5a6b4a;
-        }
-
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .process-step {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: #5a6b4a;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0 auto 1rem;
-        }
-
-        .process-step h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #5a6b4a;
-        }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #5a6b4a 0%, #7a8d6a 100%);
-            color: white;
-            text-align: center;
-        }
-
-        .contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .contact-button {
-            background: white;
-            color: #5a6b4a;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .contact-button:hover {
-            background: #f0f0f0;
-            transform: translateY(-2px);
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .process-steps {
-                grid-template-columns: 1fr;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
+        .pricing-item h3 { margin-bottom: 0.5rem; color: #5a6b4a; }
+        .payment-section { padding: 60px 0; background: white; text-align: center; }
+        .payment-section h2 { font-size: 2rem; margin-bottom: 1rem; }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">QB</div>
-                    <span>The Quiet Brand Studio</span>
+            <div class="header-content" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="logo" style="display: flex; align-items: center;">
+                    <img src="THE QUIET BRAND LOGO.png" alt="The Quiet Brand Logo">
+                    <span style="font-size: 1.8rem; font-weight: bold; color: white;">The Quiet Brand</span>
                 </div>
                 <nav>
-                    <ul>
+                    <ul style="list-style: none; display: flex; gap: 2rem;">
                         <li><a href="#about">About</a></li>
                         <li><a href="#services">Services</a></li>
                         <li><a href="#process">Process</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
@@ -341,101 +50,49 @@
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero" style="padding: 120px 0 80px; background: linear-gradient(135deg, #5a6b4a, #7a8d6a); color: white; text-align: center;">
         <div class="container">
             <h1>JAYE CREATES</h1>
             <p class="tagline">Quiet builds. Loud results.</p>
             <p>Ready to learn how AI can help you or your small business? Need help with ChatGPT, Custom GPTs, Gamma, website building, or starting your business with LLCs and trademarks?</p>
-            <a href="#contact" class="cta-button">Get AI Consulting</a>
+            <a href="#pricing" class="cta-button">Start Here</a>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="pricing" class="pricing">
         <div class="container">
-            <h2>The Quiet Build Approach</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p><strong>Hi, I'm Jaye.</strong> Ready to learn how AI can help your business? I help small business owners and creative entrepreneurs learn to use AI tools like ChatGPT, Custom GPTs, Gamma, and website builders. I also help with business basics like setting up LLCs and trademarks.</p>
-                    
-                    <p>I teach practical AI skills that you can use right away. Whether you're just starting out or looking to add AI to your existing business, I make it simple and easy to understand.</p>
-                    
-                    <p>My approach is straightforward: learn the tools, use them in your business, and get results. No complicated tech talk, just practical help that works.</p>
-                    
-                    <p><em>Quiet builds. Loud results. That's how I help you learn AI and grow your business step by step.</em></p>
+            <h2>Hourly Rates + What You Can Book</h2>
+            <div class="pricing-table">
+                <div class="pricing-item">
+                    <h3>✨ ChatGPT 101 – $47/hr</h3>
+                    <p>Learn how to use ChatGPT for business or personal life.</p>
                 </div>
-                <div class="about-image">
-                    <div>
-                        <h3>Learn AI & Business</h3>
-                        <p>Simple training for<br>small business owners</p>
-                    </div>
+                <div class="pricing-item">
+                    <h3>🔧 Custom GPT Builds – $97/hr</h3>
+                    <p>Hands-on GPT setup + custom use-case support.</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>🌐 Website Help – starts at $99</h3>
+                    <p>From scratch or revamp — includes strategy and build-out.</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>🗞 LLC + Trademark Setup – $77/hr</h3>
+                    <p>Help setting up your legal structure and paperwork.</p>
+                </div>
+                <div class="pricing-item">
+                    <h3>🎨 AI Content + Prompts (Crafters) – $57/hr</h3>
+                    <p>Templates, product mockups, AI prompt strategies.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="services">
+    <section class="payment-section">
         <div class="container">
-            <h2>What I Help You Learn</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>AI Tools Training</h3>
-                    <p>Learn ChatGPT, Custom GPTs, Gamma, and other AI tools that can help your business grow and save time.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🌐</div>
-                    <h3>Website Building</h3>
-                    <p>Simple website creation using AI tools and easy platforms. Get your business online quickly and professionally.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📋</div>
-                    <h3>Business Setup</h3>
-                    <p>Help with the basics - setting up your LLC, understanding trademarks, and getting your business legally started.</p>
-                </div>
-            </div>
+            <h2>Ready to Book a Session?</h2>
+            <p>Click the button below to make your payment or schedule a session. You will receive a confirmation via email.</p>
+            <a href="https://paypal.me/yourpaypal" target="_blank" class="cta-button">Pay with PayPal</a>
         </div>
     </section>
-
-    <section id="process" class="process">
-        <div class="container">
-            <h2>How I Help You Learn</h2>
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Talk About Your Needs</h3>
-                    <p>We discuss what you want to learn and what your business needs most right now.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Simple Training Plan</h3>
-                    <p>I create easy-to-follow lessons focused on the AI tools and business basics you actually need.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Hands-On Learning</h3>
-                    <p>We practice together so you feel confident using these tools in your own business.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-number">4</div>
-                    <h3>Ongoing Support</h3>
-                    <p>I'm here to help when you have questions or need guidance as you grow your business.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Ready to Learn AI for Your Business?</h2>
-            <p>Let's start with simple AI tools and business basics that actually help you grow. Perfect for small business owners who want to learn step by step.</p>
-            <a href="mailto:jaye@thequietbrand.com" class="contact-button">Start Learning Today</a>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 The Quiet Brand. Learn AI tools and business basics that help your small business grow.</p>
-        </div>
-    </footer>
 </body>
 </html>

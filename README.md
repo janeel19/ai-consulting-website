@@ -1,2 +1,2 @@
-# ai-consulting-website
- "Professional AI consulting website showcasing services in ChatGPT training, Custom GPT development, and workflow automation"
+# the-quiet-brand
+Welcome to **The Quiet Brand** – a digital consulting platform  designed to empower small business owners, crafters, and creatives with beginner-friendly AI support and business setup services.
